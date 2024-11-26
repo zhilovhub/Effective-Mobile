@@ -1,0 +1,14 @@
+[Unit]
+Description=Monitor Worker for the process
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/zhilovhub/monitor_worker.sh %i
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
