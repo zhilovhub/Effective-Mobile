@@ -1,0 +1,11 @@
+
+[Unit]
+Description=Timer for Monitor Worker Service
+Requires=monitor_worker@%i.service
+
+[Timer]
+Unit=monitor_worker@%i.service
+OnCalendar=*-*-* *:*:00
+
+[Install]
+WantedBy=timers.target

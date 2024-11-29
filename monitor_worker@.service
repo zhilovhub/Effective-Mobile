@@ -2,13 +2,11 @@
 Description=Monitor Worker for the process
 After=network.target
 Wants=network.target
+Wants=monitor_worker_timer@%i.service
 
 [Service]
-Type=simple
+Type=oneshot
 ExecStart=/home/zhilovhub/monitor_worker.sh %i
-ExecReload=/bin/kill -HUP $MAINPID
-KillMode=process
-Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
